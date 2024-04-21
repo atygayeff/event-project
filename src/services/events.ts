@@ -16,9 +16,7 @@ export const getEvents = () => {
 export const getCategories = () => {
     return axios
         .get<CmslistResponse<EventCategory>>(`${CMS_ROOT}/event-categories`, {
-            params: {
-                populate: 'cover, gallery, event_category',
-            },
+            params: {},
         })
         .then((r) => r.data);
 };
