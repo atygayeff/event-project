@@ -1,11 +1,11 @@
 import axios from "axios"
-import { CmslistResponse, EventCategory } from "../types/events";
+import { CmsEvent, CmsEventCategory, CmslistResponse,  } from "../types/events";
 
-const CMS_ROOT = 'https://dar-u-cms.dar-dev.zone/api/events'
+const CMS_ROOT = 'https://dar-u-cms.dar-dev.zone/api';
 
 export const getEvents = () => {
     return axios
-        .get<CmslistResponse<Event>>(`${CMS_ROOT}/events`, {
+        .get<CmslistResponse<CmsEvent>>(`${CMS_ROOT}/events`, {
             params: {
                 populate: 'cover, gallery, event_category',
             },
@@ -15,7 +15,7 @@ export const getEvents = () => {
 
 export const getCategories = () => {
     return axios
-        .get<CmslistResponse<EventCategory>>(`${CMS_ROOT}/event-categories`, {
+        .get<CmslistResponse<CmsEventCategory>>(`${CMS_ROOT}/event-categories`, {
             params: {},
         })
         .then((r) => r.data);

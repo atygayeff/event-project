@@ -10,7 +10,7 @@ export interface CmslistResponse<T> {
     };
 }
 
-export interface Event {
+export interface CmsEvent {
     id: 1,
     attributes: {
         title: string;
@@ -22,12 +22,12 @@ export interface Event {
         publishedAt: string;
         votes: string;
         event_category: {
-            data: EventCategory;
+            data: CmsEventCategory;
         };
     };
 }
 
-export interface EventCategory {
+export interface CmsEventCategory {
     id: 1,
     attributes: {
         title: string;
