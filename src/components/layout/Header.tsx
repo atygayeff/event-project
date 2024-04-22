@@ -76,7 +76,7 @@ export const Header: FC = () => {
                             <Link to="/events/popular">
                                 <Typography textAlign="center">Популярное</Typography>
                             </Link>                            
-                            <Link to="categories">
+                            <Link to="/events/categories">
                                 <Typography textAlign="center">Категории</Typography>
                             </Link>
 
