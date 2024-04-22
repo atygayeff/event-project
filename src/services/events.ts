@@ -3,11 +3,12 @@ import { CmsEvent, CmsEventCategory, CmslistResponse,  } from "../types/events";
 
 const CMS_ROOT = 'https://dar-u-cms.dar-dev.zone/api';
 
-export const getEvents = () => {
+export const getEvents = (sort?: string) => {
     return axios
         .get<CmslistResponse<CmsEvent>>(`${CMS_ROOT}/events`, {
             params: {
                 populate: 'cover, gallery, event_category',
+                'sort[0]': sort ?? undefined,
             },
         })
         .then((r) => r.data);

@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.css'
 import { MainLayout } from './components/layout/MainLayout';
 import { Index } from './pages/Index';
+import { EventsPage } from './pages/Events';
 
 
 
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Index />
+      },
+      {
+        path: '/events/:type',
+        element: <EventsPage />,
       }
     ]
 }
