@@ -11,7 +11,7 @@ export interface CmslistResponse<T> {
 }
 
 export interface CmsEvent {
-    id: 1,
+    id: number;
     attributes: {
         title: string;
         description: string;
@@ -24,11 +24,14 @@ export interface CmsEvent {
         event_category: {
             data: CmsEventCategory;
         };
+        cover: {
+            data: CmsImage;
+        }
     };
 }
 
 export interface CmsEventCategory {
-    id: 1,
+    id: number;
     attributes: {
         title: string;
         sort_order: number;
@@ -36,3 +39,14 @@ export interface CmsEventCategory {
         updatedAt: string;
     };
 }
+
+export interface CmsImage {
+        id: number;
+        attributes: {
+            id: number;
+            name: string;
+            width: number;
+            height: number;
+            url: string;
+        }
+    }
