@@ -20,7 +20,7 @@ export const Events: FC<Props> = ({ events }) => {
                             image={item.attributes.cover?.data.attributes.url}
                             alt="Paella dish"
                             />
-                            <CardContent>{item.attributes.title}, {item.attributes.start_date}</CardContent>
+                            <CardContent> <h2>{item.attributes.title}</h2> <h3> Дата начала {item.attributes.start_date}</h3> <h3> Дата окончания {item.attributes.end_date}</h3> </CardContent>
                         </Card>
                     </Grid>
                 ))}

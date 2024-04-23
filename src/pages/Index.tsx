@@ -10,6 +10,6 @@ export const Index = () => {
         console.log(r);
         setEvents(r.data);
        }) 
-    }, [])
+    }, []);
     return <Events events={events} />;
 };

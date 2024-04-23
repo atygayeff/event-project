@@ -8,7 +8,9 @@ export const EventsPage = () => {
     const [events, setEvents] = useState<CmsEvent[]>([]);
     const { type } = useParams();
     useEffect(() => {
-        getEvents(type === 'new' ? 'createdAt:desc' : 'votes:desc').then((r) => {
+        getEvents({
+            sort: type === 'new' ? 'createdAt:desc' : 'votes:desc',
+        }).then((r) => {
             setEvents(r.data);
         })
     }, [type])
