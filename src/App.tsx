@@ -5,6 +5,8 @@ import { MainLayout } from './components/layout/MainLayout';
 import { Index } from './pages/Index';
 import { EventsPage } from './pages/Events';
 import { CategoriesPage } from './pages/Categotries';
+import { AuthLayout } from './components/layout/AuthLayout';
+import { RegisterPage } from './pages/Register';
 
 
 
@@ -27,7 +29,18 @@ const router = createBrowserRouter([
         element: <CategoriesPage />,
       },
     ]
-}
+  },
+  {
+    path: '/auth',
+    element: <AuthLayout />,
+    children: [
+      {
+        path: 'register',
+        element: <RegisterPage />,
+      },
+    ],
+  }
+
 ]);
 
 export const App: React.FC = () => {
