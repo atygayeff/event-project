@@ -1,0 +1,1 @@
+export const CMS_ROOT = 'https://dar-u-cms.dar-dev.zone/api';

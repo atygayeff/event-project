@@ -1,8 +1,14 @@
-import { Box, Button, Container, TextField } from "@mui/material"
+import { Button, Container, FormGroup as MuiFormGroup, TextField, styled } from "@mui/material"
 import { FormEvent, useState } from "react";
+import { RegisterRequest } from "../types/auth";
+import { registerUser } from "../services/auth";
+import { useAuth } from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 export const RegisterPage = () => {
-    const [formData, setFormData] = useState({
+    const { login } = useAuth();
+    const navigate = useNavigate ();
+    const [formData, setFormData] = useState<RegisterRequest>({
         username: '',
         password: '',
         email: '',
@@ -10,11 +16,15 @@ export const RegisterPage = () => {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
+        registerUser(formData).then(r => {
+            login(r);
+            navigate('/');
+        })
     };
 
     return <Container>
-        <form onSubmit={handleSubmit}>
-            <Box>
+        <StyledForm onSubmit={handleSubmit}>
+            <FormGroup>
                 <TextField
                     type="text"
                     placeholder="Username"
@@ -23,8 +33,8 @@ export const RegisterPage = () => {
                         setFormData((v) => ({ ...v, username: e.target.value }));
                     }}
                 />
-            </Box>
-            <Box>
+            </FormGroup>
+            <FormGroup>
                 <TextField
                     type="text"
                     placeholder="Email"
@@ -33,8 +43,8 @@ export const RegisterPage = () => {
                         setFormData((v) => ({ ...v, email: e.target.value }));
                     }}
                 />
-            </Box>
-            <Box>
+            </FormGroup>
+            <FormGroup>
                 <TextField
                     type="password"
                     placeholder="Password"
@@ -43,8 +53,18 @@ export const RegisterPage = () => {
                         setFormData((v) => ({ ...v, password: e.target.value }));
                     }}
                 />
-            </Box>
+            </FormGroup>
             <Button type="submit" variant="contained">Register</Button>
-        </form>
+        </StyledForm>
     </Container>
 }
+
+
+const StyledForm = styled('form')`
+    width: 420px;
+    margin: 0 auto;
+`
+
+const FormGroup = styled(MuiFormGroup)`
+    margin-bottom: 16px;
+`

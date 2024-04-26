@@ -3,8 +3,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { FC, useState } from "react";
 import { Nav } from "./Header.styles";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 
 export const Header: FC = () => {
+    const { username } = useAuth();
     const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -75,14 +77,20 @@ export const Header: FC = () => {
                             </Link>
                             <Link to="/events/popular">
                                 <Typography textAlign="center">Популярное</Typography>
-                            </Link>                            
+                            </Link>
                             <Link to="/events/categories">
                                 <Typography textAlign="center">Категории</Typography>
                             </Link>
 
                         </Nav>
                     </Box>
-
+                    {username ? (
+                        <Link to="/cabinet">
+                            <Typography>{username}</Typography>
+                        </Link>
+                    ) : (
+                        <Link to="/auth/login">Log in</Link>
+                    )}
                 </Toolbar>
             </Container>
         </AppBar>)
