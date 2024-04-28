@@ -1,5 +1,5 @@
 export interface CmslistResponse<T> {
-    data: T [];
+    data: T[];
     meta: {
         pagination: {
             page: number;
@@ -30,6 +30,13 @@ export interface CmsEvent {
     };
 }
 
+export interface CreateEventRequest {
+    title: string;
+    description: string;
+    cover: number | null;
+    event_category: number | null;
+    creator: number
+}
 export interface CmsEventCategory {
     id: number;
     attributes: {
@@ -41,12 +48,12 @@ export interface CmsEventCategory {
 }
 
 export interface CmsImage {
+    id: number;
+    attributes: {
         id: number;
-        attributes: {
-            id: number;
-            name: string;
-            width: number;
-            height: number;
-            url: string;
-        }
+        name: string;
+        width: number;
+        height: number;
+        url: string;
     }
+}

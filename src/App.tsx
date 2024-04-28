@@ -7,6 +7,8 @@ import { EventsPage } from './pages/Events';
 import { CategoriesPage } from './pages/Categotries';
 import { AuthLayout } from './components/layout/AuthLayout';
 import { RegisterPage } from './pages/Register';
+import { MyEventsPage } from './pages/cabinet/myEventsPage';
+import { MyEventsCreatePage } from './pages/cabinet/myEventsCreatePage';
 
 
 
@@ -28,6 +30,15 @@ const router = createBrowserRouter([
         path: '/events/categories',
         element: <CategoriesPage />,
       },
+      {
+        path: '/cabinet/events',
+        element: <MyEventsPage />,
+      },
+      {
+        path: '/cabinet/events/create',
+        element: <MyEventsCreatePage />,
+      },
+
     ]
   },
   {
