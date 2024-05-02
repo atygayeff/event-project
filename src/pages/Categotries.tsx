@@ -8,6 +8,7 @@ export const CategoriesPage = () => {
   const [categories, setCategories] = useState<CmsEventCategory[]>([]);
   const [events, setEvents] = useState<CmsEvent[]>([]);
   const [selectedId, setSelectedId] = useState<number>();
+  
   useEffect(() => {
     getCategories().then((r) => {
       console.log(r);

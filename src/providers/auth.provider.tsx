@@ -6,15 +6,14 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
     const [userData, setUserData] = useState<{
         username: string;
         email: string;
-    } | undefined>({
-        username: '',
-        email: '',
-    });
+        userId: number;
+    } | undefined>();
 
     const login = (data: AuthResponse) => {
         setUserData({
             username: data.user.username,
             email: data.user.email,
+            userId: data.user.id,
         });
         localStorage.setItem('events-auth', data.jwt);
         localStorage.setItem('events-profile', JSON.stringify(data.user));
@@ -36,11 +35,13 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
         setUserData({
             username: parsed.username,
             email: parsed.email,
+            userId: parsed.id,
         });
     }, []);
     return (
         <AuthContext.Provider
             value={{
+                userId: userData?.userId || 0,
                 username: userData?.username || '',
                 email: userData?.email || '',
                 login,
