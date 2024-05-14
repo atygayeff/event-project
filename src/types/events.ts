@@ -10,6 +10,11 @@ export interface CmslistResponse<T> {
     };
 }
 
+export interface CmsItemResponse<T> {
+    data: T;
+    meta: unknown;
+}
+
 export interface CmsEvent {
     id: number;
     attributes: {

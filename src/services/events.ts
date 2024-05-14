@@ -1,5 +1,5 @@
 import axios from "axios"
-import { CmsEvent, CmsEventCategory, CmsImage, CmslistResponse, CreateEventRequest, } from "../types/events";
+import { CmsEvent, CmsEventCategory, CmsImage, CmsItemResponse, CmslistResponse, CreateEventRequest, } from "../types/events";
 
 const CMS_ROOT = 'https://dar-u-cms.dar-dev.zone/api';
 
@@ -14,6 +14,21 @@ export const getEvents = (params?: { sort?: string; categoryId?: number; }) => {
         })
         .then((r) => r.data);
 };
+
+export const getEvent = (id: number) => {
+    const token = localStorage.getItem('events-auth');
+  
+    return axios
+      .get<CmsItemResponse<CmsEvent>>(`${CMS_ROOT}/events/${id}`, {
+        headers: {
+          Authorization: token ? `Bearer ${token}` : undefined,
+        },
+        params: {
+          populate: 'cover,gallery,event_category,creator',
+        },
+      })
+      .then((r) => r.data);
+  };
 
 export const getCategories = () => {
     return axios

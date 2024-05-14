@@ -9,6 +9,8 @@ import { AuthLayout } from './components/layout/AuthLayout';
 import { RegisterPage } from './pages/Register';
 import { MyEventsPage } from './pages/cabinet/myEventsPage';
 import { MyEventsCreatePage } from './pages/cabinet/myEventsCreatePage';
+import { EventDetails } from './pages/EventDetails';
+import { LoginPage } from './pages/Login';
 
 
 
@@ -21,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Index />
+      },
+      {
+        path: '/events/details/:id',
+        element: <EventDetails />,
       },
       {
         path: '/events/:type',
@@ -48,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: 'register',
         element: <RegisterPage />,
+      },
+      {
+        path: 'login',
+        element: <LoginPage />,
       },
     ],
   }
